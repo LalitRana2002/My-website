@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lalit Kumar Rana - Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f0f4f8;
+      color: #333;
+    }
+    header, footer, section {
+      padding: 40px 20px;
+      text-align: center;
+    }
+    header {
+      background-color: #ffffff;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    header img {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: contain;
+      object-position: center top ;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .summary {
+      max-width: 700px;
+      margin: 20px auto;
+      font-size: 16px;
+      color: #555;
+    }
+    .skills, .projects, .education {
+      background-color: #f9fbfd;
+    }
+    .section-title {
+      font-size: 30px;
+      color: #007bff;
+      margin-bottom: 30px;
+    }
+    .grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      width: 280px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      font-size: 16px;
+      transition: transform 0.2s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    .card i {
+      font-size: 22px;
+      color: #007bff;
+    }
+    .card h3 {
+      margin: 10px 0 5px;
+      font-size: 18px;
+    }
+    a {
+      color: #007bff;
+      text-decoration: none;
+    }
+    .contact i {
+      margin-right: 8px;
+      color: #007bff;
+    }
+    .contact-box {
+      max-width: 400px;
+      margin: 0 auto;
+      background-color: #eaf4ff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+    .contact-box p {
+      margin: 10px 0;
+      font-size: 16px;
+    }
+    footer {
+      font-size: 14px;
+      color: #666;
+      border-top: 1px solid #ddd;
+      background: #fff;
+    }
+
+    /* Star Rating Animation */
+    .rating-stars {
+      font-size: 2rem;
+      color: gray;
+      cursor: pointer;
+      margin-top: 20px;
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s ease forwards;
+    }
+
+    .rating-stars .star {
+      transition: transform 0.3s ease, color 0.3s ease;
+      display: inline-block;
+      transform-origin: center;
+    }
+
+    .rating-stars .star:hover,
+    .rating-stars .star.hovered {
+      color: gold;
+      transform: scale(1.3);
+    }
+
+    .rating-stars .star.selected {
+      color: gold;
+      animation: pop 0.4s ease;
+    }
+
+    .rating-label {
+      margin-top: 10px;
+      font-size: 16px;
+      color: #555;
+      opacity: 0;
+      animation: fadeIn 1s ease 0.8s forwards;
+    }
+
+    @keyframes pop {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.5); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .grid {
+        flex-direction: column;
+        align-items: center;
+      }
+      .card {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="IMG_20250222_151744_0452_40224076.jpg" alt="Lalit Kumar Rana">
+    <p>Hello, I'm</p>
+    <h1>Lalit Kumar Rana</h1>
+    <h2><strong>Data Analyst / Python Developer</strong></h2>
+    <div class="summary">
+      I am a data-driven professional with a background in Computer Science and Engineering. I specialize in leveraging tools like Python, SQL, Excel, Power BI and Tableau to extract meaningful insights and craft compelling visual stories from raw data. I bring a blend of technical expertise and business understanding to help teams make smarter, data-informed decisions.
+      And also a detail-oriented Python Developer with strong foundational knowledge in software development, data manipulation, and automation. Skilled in writing clean, efficient, and scalable Python code for both web and backend applications. Using popular libraries and frameworks such as Django, Flask, Pandas, NumPy, and requests to build functional solutions. Adept at working with databases (MySQL, SQLite), REST APIs, and integrating third-party tools. Passionate about problem-solving, continuous learning, and building technology that delivers real-world impact.
+    </div>
+
+    <!-- ⭐ Rating Stars Section -->
+    <div class="rating-stars" id="rating-stars">
+      <span class="star" data-value="1">&#9733;</span>
+      <span class="star" data-value="2">&#9733;</span>
+      <span class="star" data-value="3">&#9733;</span>
+      <span class="star" data-value="4">&#9733;</span>
+      <span class="star" data-value="5">&#9733;</span>
+    </div>
+    <p class="rating-label" id="rating-output">Rate my portfolio!</p>
+  </header>
+
+  <section class="skills">
+    <h2 class="section-title">Check Out My Skills</h2>
+    <div class="grid">
+      <div class="card"><i class="fab fa-python"></i> Python</div>
+      <div class="card"><i class="fas fa-chart-line"></i> NumPy, Pandas, Matplotlib, Seaborn</div>
+      <div class="card"><i class="fas fa-database"></i> SQL / MySQL</div>
+      <div class="card"><i class="fas fa-chart-pie"></i> Power BI</div>
+      <div class="card"><i class="fas fa-chart-pie"></i> Tableau</div>
+      <div class="card"><i class="fas fa-file-excel"></i> Advanced Excel</div>
+      <div class="card"><i class="fas fa-cogs"></i> Django</div>
+      <div class="card"><i class="fas fa-cogs"></i> Flask</div>
+      <div class="card"><i class="fas fa-layer-group"></i> Pygame</div>
+      <div class="card"><i class="fa-brands fa-html5"></i> HTML (Intermediate)</div>
+      <div class="card"><i class="fa-brands fa-css3-alt"></i> CSS (Intermediate)</div>
+      <div class="card"><i class="fa-brands fa-microsoft"></i> Microsoft Office (Proficient with Windows)</div>
+      <div class="card"><i class="fas fa-code"></i>Proficient in Jupyter Notebook / VS Code / PyCharm</div>
+      <div class="card"><i class="fa-brands fa-apple"></i> Proficient with Macbook</div>
+      <div class="card"><i class="fa-solid fa-robot"></i>Proficient with AI Tools</div>
+      
+    </div>
+  </section>
+
+  <section class="projects">
+    <h2 class="section-title">Explore My Projects</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Home Automation System</h3>
+        <p>Controls household devices via smartphone using voice commands and Arduino setup.</p>
+      </div>
+      <div class="card">
+        <h3>Cafe Management System</h3>
+        <p>Python-based System for managing cafe orders and billing.</p>
+      </div>
+      <div class="card">
+        <h3>Library Management System</h3>
+        <p>Python-based System for managing library.</p>
+      </div>
+      <div class="card">
+        <h3>Telecom Churn Prediction</h3>
+        <p>EDA project using Python libraries to clean data and visualize churn trends.</p>
+      </div>
+      <div class="card">
+        <h3>Excel Dashboard - Coffee Shop Sales</h3>
+        <p>Interactive sales dashboard using Excel Pivot Charts and slicers.</p>
+      </div>
+      <div class="card">
+        <h3>Snake Game</h3>
+        <p>Snake game using pygame library of Python.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="education">
+    <h2 class="section-title">Education</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>B.Tech in Computer Science & Engineering</h3>
+        <p>Krishna Engineering College, Ghaziabad, UP</p>
+        <p>Aug 2019 – Aug 2023</p>
+      </div>
+      <div class="card">
+        <h3>Intermediate (PCM)</h3>
+        <p>Sarang Senior Secondary School, Bijnor, UP</p>
+        <p>Apr 2018 – Apr 2019</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact">
+    <h2 class="section-title">Get in Touch</h2>
+    <div class="contact-box">
+      <p><i class="fas fa-phone"></i> <a href="tel:+918384844478">+91 83848 44478</a></p>
+      <p><i class="fas fa-envelope"></i> <a href="mailto:lalitchauhan853@gmail.com">lalitchauhan853@gmail.com</a></p>
+      <p><i class="fab fa-linkedin"></i> <a href="https://linkedin.com/in/lalit-kumar-rana-ba5177327" target="_blank">/lalit-kumar-rana</a></p>
+      <p><i class="fa-brands fa-github"></i> <a href="https://github.com/account" target="_blank">/LalitRana2002</a></p>
+
+    </div>
+  </section>
+
+  <footer>
+    Copyright © 2025 Thakur Lalit Rajput. 
+    All Rights Reserved.
+  </footer>
+
+
+  <!-- ⭐ Star Rating Script -->
+  <script>
+    const stars = document.querySelectorAll('#rating-stars .star');
+    const output = document.getElementById('rating-output');
+
+    stars.forEach((star, index) => {
+      star.addEventListener('mouseover', () => {
+        stars.forEach((s, i) => {
+          s.classList.toggle('hovered', i <= index);
+        });
+      });
+
+      star.addEventListener('mouseout', () => {
+        stars.forEach(s => s.classList.remove('hovered'));
+      });
+
+      star.addEventListener('click', () => {
+        const value = star.getAttribute('data-value');
+        stars.forEach((s, i) => {
+          s.classList.remove('selected');
+          if (i < value) s.classList.add('selected');
+        });
+        output.textContent = `Thanks! You rated this ${value} star${value > 1 ? 's' : ''}.`;
+      });
+    });
+  </script>
+
+</body>
+</html>
